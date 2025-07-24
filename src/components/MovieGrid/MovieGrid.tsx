@@ -12,12 +12,14 @@ export default function MovieGrid( {movies, onSelect} : MovieGridProps) {
             {movies.map((movie) => (
                 <li key={movie.id}>
                     <div className={css.card} onClick={() => onSelect(movie)}>
-                  <img 
-                        className={css.image} 
+              {movie.poster_path ?   ( <img 
+                            className={css.image} 
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt= {movie.title}
                         loading="lazy" 
-                      />
+                      /> ) : (
+                        <div className={css.placeholder}>No image available</div> 
+                      )}
                         <h2 className={css.title}>{movie.title}</h2>
                 </div>
                 </li>
